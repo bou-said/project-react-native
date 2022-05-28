@@ -1,5 +1,5 @@
-import React, {createContext, useContext, useMemo, useState} from 'react';
-
+import {createContext, useContext, useMemo, useState, useCallback} from 'react';
+import React from "react";
 
 
 const CarsContext = createContext();
@@ -37,14 +37,23 @@ const INITIAL_DATA = [
 
 
 export function CarsProvider(props) {
-    const [cars] = useState(INITIAL_DATA);
+    const [cars, setCars] = useState(INITIAL_DATA);
 
+    const onToggleIsSelected = useCallback(
+        carToToggle => {
+            const toggledCar = {...carToToggle, isSelected: !carToToggle.isSelected};
+            console.log(toggledCar);
+            setCars(cars.map(car => carToToggle.id === car.id ? toggledCar : car))
+        },
+        [cars, setCars]
+        )
+    ;
 
 
     const api = useMemo(() => ({
-        cars
+        cars, onToggleIsSelected
     }), [
-        cars
+        cars, onToggleIsSelected
     ]);
     return <CarsContext.Provider value={api}>
         {props.children}

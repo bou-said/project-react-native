@@ -1,9 +1,19 @@
-import {Text} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
+import tw from "twrnc";
+import {useCarsContext} from "../contexts/CarsContext";
 
-export function CarDetailsScreen(){
+function Banner({car}) {
+    return (
+        <View>
+            <Text>{car.name}</Text>
+        </View>
+    );
+}
+
+export function CarDetailsScreen({route}){
+    const{car} = route.params
     return(
-        <Text>
-            Cardetails
-        </Text>
+            <Banner car={car}/>
     )
 }
+
