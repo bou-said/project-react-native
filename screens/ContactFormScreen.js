@@ -1,4 +1,4 @@
-import {StyleSheet, TextInput, View, Button} from "react-native";
+import {StyleSheet, TextInput, View, Button, Alert} from "react-native";
 import {useState} from "react";
 import emailjs from "@emailjs/browser";
 
@@ -15,6 +15,7 @@ export function ContactFormScreen() {
         setName("");
         setEmail("");
         setPhoneNumber("");
+
     }
 
     return (
@@ -23,9 +24,9 @@ export function ContactFormScreen() {
                 <TextInput style={styles.textInput} placeholder="Name" id="name"
                            onChangeText={e => setName(e)} name="name" value={name}/>
 
-                <TextInput style={styles.textInput} placeholder="email" id="email"
+                <TextInput style={styles.textInput} placeholder="Email" id="email"
                            onChangeText={e => setEmail(e)} name="email" value={email}/>
-                <TextInput style={styles.textInput} placeholder="phoneNumber" id="phoneNumber"
+                <TextInput style={styles.textInput} placeholder="Phonenumber" id="phoneNumber"
                            onChangeText={e => setPhoneNumber(e)} name="phoneNumber" value={phoneNumber}/>
                 <Button title="send" onPress={handleSumbit}/>
             </form>
@@ -37,9 +38,10 @@ export function ContactFormScreen() {
 const styles = StyleSheet.create({
 
     textInput: {
-        borderWidth: 2,
-        borderColor: 'black',
-        margin: 20
+        paddingHorizontal: 10,
+        height: 40,
+        margin: 12,
+        borderWidth: 1
     }
 
 })

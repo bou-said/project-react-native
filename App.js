@@ -17,6 +17,7 @@ import {ContactFormScreen} from "./screens/ContactFormScreen";
 import tw from 'twrnc';
 import React from "react";
 import {CarFavoriteScreen} from "./screens/CarFavoriteScreen";
+import {DealerScreen} from "./screens/DealerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ function ProvidedApp() {
                 <Stack.Screen name={NAV_HOME} component={HomeScreen} options={{headerShown: false}}/>
                 <Stack.Screen name={NAV_CAR_DETAILS} component={CarDetailsScreen}/>
                 <Stack.Screen name={NAV_CAR_FAVORITE} component={CarFavoriteScreen}/>
-                <Stack.Screen name={NAV_CAR_DEALER} component={CarDetailsScreen}/>
+                <Stack.Screen name={NAV_CAR_DEALER} component={DealerScreen}/>
                 <Stack.Screen name={NAV_CONTACT_FORM} component={ContactFormScreen}/>
             </Stack.Navigator>
         </>

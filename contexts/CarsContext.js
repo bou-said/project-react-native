@@ -16,7 +16,7 @@ const INITIAL_DATA = [
         price: '€70000',
         seats: 5,
         cruiseControl: 'no',
-        dealer: 'Brussel',
+        dealer: 'Tesla Brussel',
         image: require('../assets/images/ModelS.jpeg'),
     }, {
         id: 2,
@@ -27,7 +27,7 @@ const INITIAL_DATA = [
         price: '€80000',
         seats: 5,
         cruiseControl: 'no',
-        dealer: 'Antwerpen',
+        dealer: 'Tesla Antwerpen',
         image: require('../assets/images/Model3.jpeg'),
     }, {
         id: 3,
@@ -38,7 +38,7 @@ const INITIAL_DATA = [
         price: '€90000',
         seats: 5,
         cruiseControl: 'yes',
-        dealer: 'Brussel',
+        dealer: 'Tesla Brussel',
         image: require('../assets/images/ModelX.jpeg'),
     }, {
         id: 4,
@@ -49,7 +49,7 @@ const INITIAL_DATA = [
         price: '€100000',
         seats: 5,
         cruiseControl: 'yes',
-        dealer: 'Antwerpen',
+        dealer: 'Tesla Antwerpen',
         image: require('../assets/images/ModelY.jpeg'),
     },
 ];
