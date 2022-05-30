@@ -2,12 +2,14 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 import tw from "twrnc";
 import React from "react";
 import {useNavigation} from "@react-navigation/native";
-import {NAV_CAR_DETAILS} from "../navigation_constants";
+import {NAV_CAR_DETAILS, NAV_CAR_DEALER, NAV_CONTACT_FORM} from "../navigation_constants";
 import {useCarsContext} from "../contexts/CarsContext";
+import {Icon} from "react-native-elements";
 
 
 export function CarItem({car}) {
     const navigation = useNavigation();
+    const {onToggleIsSelected} = useCarsContext();
 
     return (
         <View style={styles.carContainer}>
@@ -18,13 +20,17 @@ export function CarItem({car}) {
 
             <View style={styles.titles}>
                 <Text style={styles.title}>{car.name}</Text>
-                <Text style={styles.subtitle}>
-                    {car.tagline}
-                    {' '}
-                    <Text style={styles.subtitleCTA}>
-                        {car.taglineCTA}
-                    </Text>
-                </Text>
+                <TouchableOpacity style={styles.subtitle} onPress={() => navigation.navigate(NAV_CONTACT_FORM) }>
+                    <Text>{car.tagline}</Text>
+
+
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subtitle} onPress={() => onToggleIsSelected(car) }>
+                    <Icon type="ionicon" name={(car.isSelected) ? 'heart' : 'heart-outline'}></Icon>
+
+
+                </TouchableOpacity>
+
             </View>
 
             <View style={styles.buttonsContainer}>
@@ -54,12 +60,11 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: '500',
     },
-    subtitleCTA: {
-        textDecorationLine: 'underline',
-    },
+
     subtitle: {
-        fontSize: 16,
-        color: '#5c5e62'
+        fontSize: 20,
+        color: 'black',
+        textDecorationLine: 'underline',
     },
 
     image: {

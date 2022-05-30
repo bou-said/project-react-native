@@ -1,4 +1,4 @@
-import {createContext, useContext, useMemo, useState, useCallback} from 'react';
+import {createContext, useContext, useMemo, useState, useCallback, useEffect} from 'react';
 import React from "react";
 
 
@@ -10,25 +10,46 @@ const INITIAL_DATA = [
     {
         id: 1,
         name: 'Model S',
-        tagline: 'Starting at $69,420',
+        tagline: 'Boek een testrit',
+        motor: 'Single motor',
+        year: 2018,
+        price: '€70000',
+        seats: 5,
+        cruiseControl: 'no',
+        dealer: 'Brussel',
         image: require('../assets/images/ModelS.jpeg'),
     }, {
         id: 2,
         name: 'Model 3',
-        tagline: 'Starting at $79,420',
-        taglineCTA: 'Touchless Delivery',
+        tagline: 'Boek een testrit',
+        motor: 'Dual motor',
+        year: 2019,
+        price: '€80000',
+        seats: 5,
+        cruiseControl: 'no',
+        dealer: 'Antwerpen',
         image: require('../assets/images/Model3.jpeg'),
     }, {
         id: 3,
         name: 'Model X',
-        tagline: 'Starting at $89,420',
-        taglineCTA: 'Touchless Delivery',
+        tagline: 'Boek een testrit',
+        motor: 'Dual motor',
+        year: 2020,
+        price: '€90000',
+        seats: 5,
+        cruiseControl: 'yes',
+        dealer: 'Brussel',
         image: require('../assets/images/ModelX.jpeg'),
     }, {
         id: 4,
         name: 'Model Y',
-        tagline: 'Starting at $99,420',
-        taglineCTA: 'Touchless Delivery',
+        tagline: 'Boek een testrit',
+        motor: 'Boek een testrit',
+        year: 2021,
+        price: '€100000',
+        seats: 5,
+        cruiseControl: 'yes',
+        dealer: 'Antwerpen',
         image: require('../assets/images/ModelY.jpeg'),
     },
 ];
@@ -37,7 +58,7 @@ const INITIAL_DATA = [
 
 
 export function CarsProvider(props) {
-    const [cars, setCars] = useState(INITIAL_DATA);
+    const [cars, setCars] = useState();
 
     const onToggleIsSelected = useCallback(
         carToToggle => {
@@ -48,6 +69,15 @@ export function CarsProvider(props) {
         [cars, setCars]
         )
     ;
+
+    //Firebase te weinig tijd uit database
+    useEffect(() =>{
+        async function load(){
+            setCars(INITIAL_DATA);
+        }
+        load()
+
+    },[])
 
 
     const api = useMemo(() => ({
