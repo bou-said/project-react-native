@@ -2,7 +2,7 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 import tw from "twrnc";
 import React, {useState} from "react";
 import {useNavigation} from "@react-navigation/native";
-import {NAV_CAR_DETAILS, NAV_CAR_DEALER, NAV_CONTACT_FORM} from "../navigation_constants";
+import {NAV_CAR_DETAILS, NAV_CONTACT_FORM, NAV_CAR_FAVORITE} from "../navigation_constants";
 import {useCarsContext} from "../contexts/CarsContext";
 import {Icon} from "react-native-elements";
 
@@ -32,6 +32,9 @@ export function CarItem({car}) {
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(NAV_CAR_DETAILS, {car})}>
                     <Text style={styles.buttonText}>Details</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(NAV_CAR_FAVORITE)}>
+                    <Text style={styles.buttonText}>Favorieten</Text>
+                </TouchableOpacity>
             </View>
 
 
@@ -49,6 +52,7 @@ const styles = StyleSheet.create({
         marginTop: '30%',
         width: '100%',
         alignItems: 'center',
+
     },
     title: {
         fontSize: 40,

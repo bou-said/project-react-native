@@ -58,7 +58,7 @@ const INITIAL_DATA = [
 
 
 export function CarsProvider(props) {
-    const [cars, setCars] = useState();
+    const [cars, setCars] = useState(INITIAL_DATA);
 
     const onToggleIsSelected = useCallback(
         carToToggle => {
@@ -70,8 +70,7 @@ export function CarsProvider(props) {
         )
     ;
 
-    //Firebase te weinig tijd uit database
-    useEffect(() =>{
+        useEffect(() =>{
         async function load(){
             setCars(INITIAL_DATA);
         }
@@ -79,11 +78,14 @@ export function CarsProvider(props) {
 
     },[])
 
+    const selectedCars = useMemo(() => cars.filter(car => car.isSelected), [cars]);
+    console.log("Cars: " + selectedCars);
+
 
     const api = useMemo(() => ({
-        cars, onToggleIsSelected
+        cars, onToggleIsSelected, selectedCars
     }), [
-        cars, onToggleIsSelected
+        cars, onToggleIsSelected, selectedCars
     ]);
     return <CarsContext.Provider value={api}>
         {props.children}

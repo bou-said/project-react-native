@@ -1,6 +1,7 @@
-import {StyleSheet, TextInput, View, Button, Alert} from "react-native";
+import {StyleSheet, TextInput, View, Button, Text} from "react-native";
 import {useState} from "react";
 import emailjs from "@emailjs/browser";
+import tw from 'twrnc';
 
 export function ContactFormScreen() {
     const [name, setName] = useState("");
@@ -15,21 +16,27 @@ export function ContactFormScreen() {
         setName("");
         setEmail("");
         setPhoneNumber("");
-
+        alert("Form is submitted!");
     }
 
     return (
         <View>
-            <form id="form">
-                <TextInput style={styles.textInput} placeholder="Name" id="name"
-                           onChangeText={e => setName(e)} name="name" value={name}/>
 
-                <TextInput style={styles.textInput} placeholder="Email" id="email"
-                           onChangeText={e => setEmail(e)} name="email" value={email}/>
-                <TextInput style={styles.textInput} placeholder="Phonenumber" id="phoneNumber"
-                           onChangeText={e => setPhoneNumber(e)} name="phoneNumber" value={phoneNumber}/>
-                <Button title="send" onPress={handleSumbit}/>
-            </form>
+            <Text style={styles.title}>Welkom bij Tesla</Text>
+            <Text style={styles.subTitle}>Vraag een gratis testrit aan</Text>
+
+            <View style={styles.form}>
+                <form id="form">
+                    <TextInput style={styles.textInput} placeholder="Naam" id="name"
+                               onChangeText={e => setName(e)} name="name" value={name}/>
+
+                    <TextInput style={styles.textInput} placeholder="Email" id="email"
+                               onChangeText={e => setEmail(e)} name="email" value={email}/>
+                    <TextInput style={styles.textInput} placeholder="Telefoonnummer" id="phoneNumber"
+                               onChangeText={e => setPhoneNumber(e)} name="phoneNumber" value={phoneNumber}/>
+                    <Button title="verzend" onPress={handleSumbit}/>
+                </form>
+            </View>
         </View>
     )
 
@@ -42,6 +49,22 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 12,
         borderWidth: 1
-    }
+    },
+
+    title: {
+        fontSize: 21,
+        textAlign: 'center',
+        paddingTop: 20,
+        fontWeight: '500',
+    },
+
+    subTitle: {
+        fontSize: 17,
+        textAlign: 'center',
+        paddingVertical: 20,
+        fontWeight: '500',
+    },
+
+    form: tw `flex-row justify-center`
 
 })

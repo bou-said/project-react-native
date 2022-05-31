@@ -14,7 +14,6 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import {CarDetailsScreen} from "./screens/CarDetailsScreen";
 import {ContactFormScreen} from "./screens/ContactFormScreen";
-import tw from 'twrnc';
 import React from "react";
 import {CarFavoriteScreen} from "./screens/CarFavoriteScreen";
 import {DealerScreen} from "./screens/DealerScreen";
