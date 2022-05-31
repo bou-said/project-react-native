@@ -26,7 +26,7 @@ export function ContactFormScreen() {
             <Text style={styles.subTitle}>Vraag een gratis testrit aan</Text>
 
             <View style={styles.form}>
-                <form id="form">
+                <form name="form">
                     <TextInput style={styles.textInput} placeholder="Naam" id="name"
                                onChangeText={e => setName(e)} name="name" value={name}/>
 
