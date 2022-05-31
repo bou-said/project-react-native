@@ -1,7 +1,6 @@
 import {useCarsContext} from "../contexts/CarsContext";
 import {Dimensions, FlatList, StyleSheet, View} from "react-native";
 import React from "react";
-import {CarItem} from "./CarItem";
 import {CarFavoriteItem} from "./CarFavoriteItem";
 
 

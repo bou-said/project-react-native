@@ -2,7 +2,7 @@ import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} f
 import tw from "twrnc";
 import React, {useState} from "react";
 import {useNavigation} from "@react-navigation/native";
-import {NAV_CAR_DETAILS, NAV_CONTACT_FORM, NAV_CAR_FAVORITE} from "../navigation_constants";
+import {NAV_CAR_DETAILS, NAV_CAR_FAVORITE} from "../navigation_constants";
 import {useCarsContext} from "../contexts/CarsContext";
 import {Icon} from "react-native-elements";
 
@@ -20,11 +20,9 @@ export function CarItem({car}) {
 
             <View style={styles.titles}>
                 <Text style={styles.title}>{car.name}</Text>
-                <TouchableOpacity style={styles.subtitle} onPress={() => navigation.navigate(NAV_CONTACT_FORM)}>
-                    <Text>{car.tagline}</Text>
-                </TouchableOpacity>
+                <Text>Voeg toe aan favorieten:</Text>
                 <TouchableOpacity onPress={() => onToggleIsSelected(car)}>
-                    <Icon type="ionicon" name={(car.isSelected) ? 'heart' : 'heart-outline'}></Icon>
+                    <Icon type="ionicon"  raised color={"red"} name={(car.isSelected) ? 'heart' : 'heart-outline'}></Icon>
                 </TouchableOpacity>
             </View>
 
@@ -74,6 +72,5 @@ const styles = StyleSheet.create({
 
     buttonsContainer: tw`absolute w-full mt-4 mb-5 flex-row justify-center bottom-0`,
     button: tw`bg-black rounded-full p-3 m-auto w-30`,
-    //touchable: (isSelected) => tw `p-3 flex-row items-center ${isSelected ? "bg-orange-100" : ""}`,
     buttonText: tw`text-white text-center`
 });

@@ -33,17 +33,27 @@ export function CarDetailsScreen({route}) {
     const {car} = route.params
     return (
         <>
-            <CarProperty value={car.id} title="Id"/>
-            <CarProperty value={car.name} title="Name"/>
-            <CarProperty value={car.motor} title="Motor"/>
-            <CarProperty value={car.year} title="Year"/>
-            <CarProperty value={car.price} title="Price"/>
+            <View style={styles.container}>
+                <ScrollView style={styles.scrollview}>
+                    <CarProperty value={car.name} title="Naam"/>
+                    <CarProperty value={car.motor} title="Motor"/>
+                    <CarProperty value={car.year} title="Jaar"/>
+                    <CarProperty value={car.seats} title="Aantal Zetels"/>
+                    <CarProperty value={car.cruiseControl} title="Cruisecontrol"/>
+                    <CarProperty value={car.range} title="Bereik"/>
+                    <CarProperty value={car.topSpeed} title="Topsnelheid"/>
+                    <CarProperty value={car.color} title="Kleur"/>
+                    <CarProperty value={car.price} title="Price"/>
 
-            <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(NAV_CAR_DEALER)}>
-                    <Text style={styles.buttonText}>{car.dealer}</Text>
-                </TouchableOpacity>
+
+                </ScrollView>
+                <View style={styles.buttonsContainer}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(NAV_CAR_DEALER)}>
+                        <Text style={styles.buttonText}>{car.dealer}</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+
 
         </>
     )
@@ -51,15 +61,14 @@ export function CarDetailsScreen({route}) {
 
 const styles = StyleSheet.create(
     {
-        container: tw`h-full bg-yellow-200`,
+        container: tw`h-full bg-black`,
         banner: tw`p-5 flex-row bg-orange-200`,
         bannerText: tw`text-purple-900 font-bold text-lg text-center flex-stretch`,
         scrollview: tw`mb-3`,
 
         buttonsContainer: tw`absolute w-full mt-4 mb-5 flex-row justify-center bottom-0`,
-        button: tw`bg-black rounded-full p-3 m-auto w-30`,
-        //touchable: (isSelected) => tw `p-3 flex-row items-center ${isSelected ? "bg-orange-100" : ""}`,
-        buttonText: tw`text-white text-center`
+        button: tw`bg-white rounded-full p-3 m-auto w-30`,
+        buttonText: tw`text-black text-center`
 
     }
 )

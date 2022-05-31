@@ -1,10 +1,11 @@
 import {Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import tw from "twrnc";
-import React, {useState} from "react";
+import React from "react";
 import {useNavigation} from "@react-navigation/native";
 import {NAV_CONTACT_FORM} from "../navigation_constants";
 import {useCarsContext} from "../contexts/CarsContext";
 import {Icon} from "react-native-elements";
+
 
 
 export function CarFavoriteItem({car}) {
@@ -13,23 +14,27 @@ export function CarFavoriteItem({car}) {
 
 
     return (
-            <View style={styles.carContainer}>
-                <ImageBackground
-                    source={car.image}
-                    style={styles.image}
-                />
+        <View style={styles.carContainer}>
+            <ImageBackground
+                source={car.image}
+                style={styles.image}
+            />
 
-                <View style={styles.titles}>
-                    <Text style={styles.title}>{car.name}</Text>
-                    <TouchableOpacity style={styles.subtitle} onPress={() => navigation.navigate(NAV_CONTACT_FORM)}>
-                        <Text>{car.tagline}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => onToggleIsSelected(car)}>
-                        <Icon type="ionicon" name={(car.isSelected) ? 'heart' : 'heart-outline'}></Icon>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.titles}>
+                <Text style={styles.title}>{car.name}</Text>
+                <TouchableOpacity onPress={() => onToggleIsSelected(car)}>
+                    <Icon type="ionicon" raised color={"red"} name={(car.isSelected) ? 'heart' : 'heart-outline'}></Icon>
+                </TouchableOpacity>
             </View>
-        )
+
+            <View style={styles.buttonsContainer}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(NAV_CONTACT_FORM)}>
+                    <Text style={styles.buttonText}>Maak een afspraak</Text>
+                </TouchableOpacity>
+            </View>
+
+        </View>
+    )
 
 }
 
@@ -63,8 +68,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
 
-    buttonsContainer: tw`absolute w-full mt-4 mb-5 flex-row justify-center bottom-0`,
+    buttonsContainer: tw`absolute w-full mt-4 mb-20 flex-row justify-center bottom-0`,
     button: tw`bg-black rounded-full p-3 m-auto w-30`,
-    //touchable: (isSelected) => tw `p-3 flex-row items-center ${isSelected ? "bg-orange-100" : ""}`,
     buttonText: tw`text-white text-center`
 });
